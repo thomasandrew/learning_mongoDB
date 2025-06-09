@@ -1,0 +1,107 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/): mongosh
+mongosh
+Current Mongosh Log ID: 68473ab905d35b6c4250eb66
+Connecting to:          mongodb://127.0.0.1:27017/mongosh?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.2
+Using MongoDB:          8.0.10
+Using Mongosh:          2.5.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2025-06-08T20:58:13.293-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+mongosh> show dbs
+admin   40.00 KiB
+config  48.00 KiB
+local   40.00 KiB
+school  72.00 KiB
+mongosh> db.students.find()
+
+mongosh> db.students.find()
+
+mongosh> db.students.insertMany([{name:"Patrick", age:38, gpa:1.5}, {name:"Sandy", age:27, gpa:4.0}, {name:"Gary", age:18, gpa:2.5}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68473ae005d35b6c4250eb67'),
+    '1': ObjectId('68473ae005d35b6c4250eb68'),
+    '2': ObjectId('68473ae005d35b6c4250eb69')
+  }
+}
+mongosh> db.students.find()
+[
+  {
+    _id: ObjectId('68473ae005d35b6c4250eb67'),
+    name: 'Patrick',
+    age: 38,
+    gpa: 1.5
+  },
+  {
+    _id: ObjectId('68473ae005d35b6c4250eb68'),
+    name: 'Sandy',
+    age: 27,
+    gpa: 4
+  },
+  {
+    _id: ObjectId('68473ae005d35b6c4250eb69'),
+    name: 'Gary',
+    age: 18,
+    gpa: 2.5
+  }
+]
+mongosh> show dbs
+admin    40.00 KiB
+config   48.00 KiB
+local    40.00 KiB
+mongosh   8.00 KiB
+school   72.00 KiB
+mongosh> db.students.insertOne({name:"Charlie", age: 37, gpa: 1.7})
+{
+  acknowledged: true,
+  insertedId: ObjectId('68473b2605d35b6c4250eb6a')
+}
+mongosh> show dbs
+admin    40.00 KiB
+config   48.00 KiB
+local    40.00 KiB
+mongosh  40.00 KiB
+school   72.00 KiB
+mongosh> db.students.find()
+[
+  {
+    _id: ObjectId('68473ae005d35b6c4250eb67'),
+    name: 'Patrick',
+    age: 38,
+    gpa: 1.5
+  },
+  {
+    _id: ObjectId('68473ae005d35b6c4250eb68'),
+    name: 'Sandy',
+    age: 27,
+    gpa: 4
+  },
+  {
+    _id: ObjectId('68473ae005d35b6c4250eb69'),
+    name: 'Gary',
+    age: 18,
+    gpa: 2.5
+  },
+  {
+    _id: ObjectId('68473b2605d35b6c4250eb6a'),
+    name: 'Charlie',
+    age: 37,
+    gpa: 1.7
+  }
+]
+mongosh> use school
+switched to db school
+
+school> db.createCollection("students")
+
+school> exit
+
+school> cls
+
+school> db.dropDatabase()
